@@ -5,7 +5,7 @@ export enum FilterTypes {
   YEARDESC = 'YEARDESC',
 }
 
-export type GamesListFilters = {
+export interface GamesListFilters {
   search: string
   genre: string
   platform: string

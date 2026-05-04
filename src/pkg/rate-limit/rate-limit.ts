@@ -1,6 +1,9 @@
 import 'server-only'
 
-type Entry = { count: number; resetAt: number }
+interface Entry {
+  count: number
+  resetAt: number
+}
 
 const store = new Map<string, Entry>()
 

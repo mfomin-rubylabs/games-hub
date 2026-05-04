@@ -21,7 +21,7 @@ export type AuthErrorCode =
   | 'rateLimited'
   | 'unexpected'
 
-type AuthData = {
+interface AuthData {
   accessToken: string
   user: { userId: string; email: string; username: string }
 }

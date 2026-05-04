@@ -78,6 +78,12 @@ Add new routes under `src/app/(api)/api/<resource>/route.ts`.
 - `'use client'` only when strictly needed — default to Server Components
 - Skeleton loaders named `{name}-skeleton.component.tsx`, co-located with their component
 
+## Type Conventions (company policy)
+
+- **Always use `interface` for object shapes** — never `type` for objects
+- `type` is only acceptable for: union types (`'a' | 'b'`), discriminated unions, derived types (`z.infer<>`, `ReturnType<>`, indexed access `T[K]`, `Parameters<>`)
+- Do not use `type` where `interface` would work — linting enforces this
+
 ## Key Import Paths
 
 - shadcn components: `@/pkg/theme/ui/<name>` — never `@/components/ui/`
@@ -149,3 +155,4 @@ Add new routes under `src/app/(api)/api/<resource>/route.ts`.
 - `next.config.ts` wraps with `createNextIntlPlugin({ requestConfig: './src/pkg/locale/request.ts' })`
 - SVGs handled via `@svgr/webpack` — import as React components
 - `yarn format` is the single pre-PR validation command
+- Do not use `cache` from `'react'` — use React Query or accept duplicate fetch calls; Next.js request memoisation only applies to native `fetch`, not Supabase or ky

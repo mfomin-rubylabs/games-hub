@@ -1,25 +1,25 @@
-export type Genre = {
+export interface Genre {
   id: string
   name: string
 }
 
-export type GenreFilter = {
+export interface GenreFilter {
   id: string
   label: string
   value: string
 }
 
-export type Platform = {
+export interface Platform {
   id: string
   name: string
 }
 
-export type PlatformFilter = {
+export interface PlatformFilter {
   label: string
   value: string
 }
 
-export type Game = {
+export interface Game {
   id: number
   name: string
   released: string
@@ -33,7 +33,7 @@ export type Game = {
   parent_platforms: { platform: Platform }[]
 }
 
-export type GamesResponse = {
+export interface GamesResponse {
   results: Game[]
   count: number
   next: boolean | null

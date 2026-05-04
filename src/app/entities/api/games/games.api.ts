@@ -69,7 +69,7 @@ export const fetchGame = async (id: string): Promise<Game> => {
   return data[0]
 }
 
-type RawgListResponse<T> = { results: T[] }
+interface RawgListResponse<T> { results: T[] }
 
 export const fetchGenres = async () => {
   return ky

@@ -1,6 +1,6 @@
 import { FavoriteGame } from '@/app/entities/models/favorite.model'
 
-export type FavoritesStore = {
+export interface FavoritesStore {
   favorites: Record<number, FavoriteGame>
 
   setFavorites: (games: FavoriteGame[]) => void

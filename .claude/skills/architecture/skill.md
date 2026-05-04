@@ -94,3 +94,9 @@ Reused in both `games-list` and `favorites-list` modules. Contains favorites tog
 
 Upper layers import from lower. Never the reverse. No circular deps.
 Every folder with public exports must have an `index.ts` barrel file.
+
+## Type Conventions (company policy)
+
+- **`interface` for all object shapes** — never `type` for objects
+- `type` only for: string/discriminated unions, `z.infer<>`, `ReturnType<>`, `Parameters<>`, indexed access (`T[K]`)
+- Do not use `cache` from `'react'` — Next.js request memoisation only works with native `fetch`; use React Query or accept duplicate calls

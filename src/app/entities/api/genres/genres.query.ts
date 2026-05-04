@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { fetchGenres } from '@/app/entities/api/games/games.api'
 
-type GenresResponse = {
+interface GenresResponse {
   id: string
   name: string
   slug: string

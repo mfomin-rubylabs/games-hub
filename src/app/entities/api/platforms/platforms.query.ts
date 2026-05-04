@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { fetchPlatforms } from '@/app/entities/api/games/games.api'
 
-type PlatformsResponse = {
+interface PlatformsResponse {
   id: string
   name: string
   slug: string

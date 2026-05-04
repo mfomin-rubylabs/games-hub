@@ -33,7 +33,7 @@ export const useFavoritesStore = create<FavoritesStore>()(
           return !!get().favorites[id]
         },
       }),
-      { name: 'favorites-storage' },
+      { name: 'favorites-storage', version: 1 },
     ),
     { enabled: process.env.NODE_ENV !== 'production' && typeof window !== 'undefined', name: 'FavoritesStore' },
   ),

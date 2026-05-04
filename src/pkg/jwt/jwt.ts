@@ -4,7 +4,7 @@ import { JWT_CONFIG } from './constant'
 
 const secret = new TextEncoder().encode(process.env.JWT_SECRET!)
 
-export type JwtPayload = {
+export interface JwtPayload {
   userId: string
   email: string
   username: string
