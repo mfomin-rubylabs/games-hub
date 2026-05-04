@@ -1,9 +1,9 @@
 ﻿'use client'
 
-import { ArrowRight, Heart } from 'lucide-react'
+import { ArrowRight, Heart, Loader2 } from 'lucide-react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { type FC } from 'react'
+import { type FC, useState } from 'react'
 
 import { FavoriteGame, Game } from '@/app/entities/models'
 import { useToggleFavorites } from '@/app/features/toggle-favorite'
@@ -22,11 +22,18 @@ const GameCardComponent: FC<Readonly<IProps>> = (props) => {
   const router = useRouter()
   const favorite = useFavoritesStore((s) => !!s.favorites[game.id])
   const toggleFavorite = useToggleFavorites().toggleFavorite
+  const [isNavigating, setIsNavigating] = useState(false)
+
+  const handleNavigate = () => {
+    if (isNavigating) return
+    setIsNavigating(true)
+    router.push(`/games/${game.id}`)
+  }
 
   return (
     <Card
       data-testid='game-card'
-      onClick={() => router.push(`/games/${game.id}`)}
+      onClick={handleNavigate}
       className='group bg-card cursor-pointer overflow-hidden rounded-sm p-0 shadow-md transition-shadow hover:shadow-lg'
     >
       {/* Cover */}
@@ -78,7 +85,7 @@ const GameCardComponent: FC<Readonly<IProps>> = (props) => {
           className='cursor-pointer opacity-100 transition-opacity duration-300 group-hover:opacity-100 hover:!bg-transparent md:opacity-0'
           size='icon'
         >
-          <ArrowRight className='h-4 w-4' />
+          {isNavigating ? <Loader2 className='h-4 w-4 animate-spin' /> : <ArrowRight className='h-4 w-4' />}
         </Button>
       </CardContent>
     </Card>

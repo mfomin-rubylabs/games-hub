@@ -26,7 +26,12 @@ const LocaleSwitcherComponent: FC<Readonly<IProps>> = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='ghost' className='rounded-sm uppercase hover:cursor-pointer' disabled={isPending}>
+        <Button
+          variant='ghost'
+          size='icon'
+          className='rounded-sm text-xs uppercase hover:cursor-pointer'
+          disabled={isPending}
+        >
           {locale}
         </Button>
       </DropdownMenuTrigger>

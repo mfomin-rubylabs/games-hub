@@ -78,13 +78,13 @@ const MobileMenuComponent: FC<Readonly<IProps>> = () => {
           ) : (
             <>
               <DropdownMenuItem asChild className='cursor-pointer'>
-                <Link href='/login'>
+                <Link href='/sign-in'>
                   <LogInIcon />
                   {tUser('signIn')}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className='cursor-pointer'>
-                <Link href='/register'>
+                <Link href='/sign-up'>
                   <UserPlusIcon />
                   {tUser('signUp')}
                 </Link>

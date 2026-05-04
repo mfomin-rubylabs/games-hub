@@ -8,8 +8,8 @@ import { useGame } from '@/app/entities/api/games'
 import { ErrorState } from '@/app/shared/ui/error-state'
 import { Badge } from '@/pkg/theme/ui/badge'
 
-import GameDetailsSkeletonComponent from './game-details-skeleton.component'
 import GameScreenshotsComponent from './elements/game-screenshots.component'
+import GameDetailsSkeletonComponent from './game-details-skeleton.component'
 
 interface IProps {
   id: string
