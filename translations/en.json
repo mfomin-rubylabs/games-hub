@@ -1,0 +1,162 @@
+{
+  "metadata": {
+    "appName": "GameHub",
+    "appDescription": "A platform to discover and share your favorite games.",
+    "games": {
+      "title": "Games",
+      "titleTemplate": "%s | Games",
+      "description": "Games collection with 1000+ games for all platforms"
+    },
+    "favorites": {
+      "title": "Favorites",
+      "description": "Your favorite games stored securely in the database"
+    },
+    "login": {
+      "title": "Sign In",
+      "description": "Sign in to your Games Hub account"
+    },
+    "register": {
+      "title": "Sign Up",
+      "description": "Sign up for a Games Hub account"
+    },
+    "gamesHub": {
+      "title": "Games Hub",
+      "description": "A video games collection hub to research and favorite games"
+    },
+    "gameNotFound": "Game not found",
+    "gameDescription": "Games Hub. Game description for game: {name}"
+  },
+  "nav": {
+    "brand": "Games Hub",
+    "navigation": "Navigation",
+    "home": "Home",
+    "allGames": "All Games",
+    "favorites": "Favorites"
+  },
+  "userMenu": {
+    "myAccount": "My Account",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "signOut": "Sign out"
+  },
+  "home": {
+    "kicker": "A home for players",
+    "title": "Games Hub",
+    "subtitle": "A quiet shelf for every title you have ever loved. Browse a living library of games across every platform and keep a list of the ones worth returning to.",
+    "exploreButton": "Explore games",
+    "favoritesButton": "Your favorites",
+    "statLabel": "Titles catalogued",
+    "statValue": "1,000+"
+  },
+  "games": {
+    "pageKicker": "The library",
+    "pageTitle": "All Games",
+    "pageSubtitle": "Browse the catalogue across every genre and platform.",
+    "filtersTitle": "Refine",
+    "filtersSubtitle": "Narrow the shelf",
+    "searchLabel": "Search",
+    "genreLabel": "Genre",
+    "platformLabel": "Platform",
+    "orderLabel": "Sort by",
+    "searchTitle": "Search Games",
+    "searchPlaceholder": "Search games...",
+    "genrePlaceholder": "Select genre",
+    "platformPlaceholder": "Select platform",
+    "orderPlaceholder": "Select order filter",
+    "filters": {
+      "ratingAsc": "Rating Ascending",
+      "ratingDesc": "Rating Descending",
+      "yearAsc": "Release Date Ascending",
+      "yearDesc": "Release Date Descending"
+    },
+    "searchButton": "Search",
+    "searching": "Searching...",
+    "empty": "No games found matching your criteria.",
+    "tba": "TBA",
+    "metacritic": "Metacritic",
+    "screenshots": "Screenshots"
+  },
+  "favorites": {
+    "pageKicker": "Your shelf",
+    "pageTitle": "Favorite Games",
+    "pageSubtitle": "The games you have set aside to revisit.",
+    "empty": "Your shelf is empty. Bookmark a game from the library and it will appear here."
+  },
+  "login": {
+    "kicker": "Welcome back",
+    "heading": "Sign in to your account",
+    "subheading": "Pick up where you left off.",
+    "emailLabel": "Email address*",
+    "emailPlaceholder": "Enter your email address",
+    "passwordLabel": "Password*",
+    "passwordPlaceholder": "••••••••••••••••",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "rememberMe": "Remember Me",
+    "forgotPassword": "Forgot Password?",
+    "submit": "Sign in",
+    "submitting": "Signing in..."
+  },
+  "register": {
+    "kicker": "New here",
+    "heading": "Create an account",
+    "subheading": "Start a shelf of your own.",
+    "usernameLabel": "Username*",
+    "usernamePlaceholder": "Enter your username",
+    "emailLabel": "Email address*",
+    "emailPlaceholder": "Enter your email address",
+    "passwordLabel": "Password*",
+    "passwordPlaceholder": "••••••••••••••••",
+    "confirmPasswordLabel": "Confirm Password*",
+    "confirmPasswordPlaceholder": "••••••••••••••••",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "agreeToTerms": "I agree to",
+    "privacyPolicy": "privacy policy & terms",
+    "submit": "Sign Up",
+    "submitting": "Signing up..."
+  },
+  "validation": {
+    "usernameMin": "Username must be at least 3 characters long",
+    "usernameMax": "Username cannot be longer than 20 characters",
+    "usernameChars": "Only letters, numbers, and underscores",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Invalid email address",
+    "passwordMin": "Password must be at least 8 characters long",
+    "passwordUppercase": "Password must contain at least one uppercase letter",
+    "passwordNumber": "Password must contain at least one number",
+    "confirmRequired": "You must confirm your password",
+    "passwordsMismatch": "Passwords do not match",
+    "termsRequired": "You must agree to the terms and conditions"
+  },
+  "authErrors": {
+    "emailTaken": "Email already in use",
+    "invalidCredentials": "Invalid email or password",
+    "sessionFailed": "Session creation failed",
+    "insertFailed": "Failed to create account",
+    "lookupFailed": "Database lookup failed",
+    "unexpected": "Something went wrong, please try again",
+    "rateLimited": "Too many attempts. Please wait 5 minutes before trying again."
+  },
+  "state": {
+    "loading": "Loading...",
+    "errorLoading": "Error loading",
+    "errorGeneric": "Error loading. Please, try again.",
+    "errorWithMessage": "{message} Please, try again.",
+    "retry": "Retry"
+  },
+  "notFound": {
+    "generic": {
+      "code": "404",
+      "title": "Page not found",
+      "description": "The page you're looking for doesn't exist or has been moved.",
+      "backHome": "Back to home"
+    },
+    "game": {
+      "code": "404",
+      "title": "Game not found",
+      "description": "We couldn't find that game. It may have been removed or the link is incorrect.",
+      "browseGames": "Browse all games"
+    }
+  }
+}

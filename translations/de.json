@@ -1,0 +1,162 @@
+{
+  "metadata": {
+    "appName": "GameHub",
+    "appDescription": "Eine Plattform, um deine Lieblingsspiele zu entdecken und zu teilen.",
+    "games": {
+      "title": "Spiele",
+      "titleTemplate": "%s | Spiele",
+      "description": "Spielesammlung mit über 1000 Spielen für alle Plattformen"
+    },
+    "favorites": {
+      "title": "Favoriten",
+      "description": "Deine Lieblingsspiele sicher in der Datenbank gespeichert"
+    },
+    "login": {
+      "title": "Anmelden",
+      "description": "Melde dich bei deinem Games-Hub-Konto an"
+    },
+    "register": {
+      "title": "Registrieren",
+      "description": "Registriere dich für ein Games-Hub-Konto"
+    },
+    "gamesHub": {
+      "title": "Games Hub",
+      "description": "Ein Videospielsammlungs-Hub zum Recherchieren und Favorisieren von Spielen"
+    },
+    "gameNotFound": "Spiel nicht gefunden",
+    "gameDescription": "Games Hub. Spielbeschreibung für: {name}"
+  },
+  "nav": {
+    "brand": "Games Hub",
+    "navigation": "Navigation",
+    "home": "Startseite",
+    "allGames": "Alle Spiele",
+    "favorites": "Favoriten"
+  },
+  "userMenu": {
+    "myAccount": "Mein Konto",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "signOut": "Abmelden"
+  },
+  "home": {
+    "kicker": "Ein Ort für Spieler",
+    "title": "Games Hub",
+    "subtitle": "Ein ruhiges Regal für jedes Spiel, das du je geliebt hast. Durchstöbere eine lebendige Bibliothek auf allen Plattformen und halte fest, zu welchen Titeln du zurückkehren möchtest.",
+    "exploreButton": "Spiele entdecken",
+    "favoritesButton": "Deine Favoriten",
+    "statLabel": "Erfasste Titel",
+    "statValue": "1.000+"
+  },
+  "games": {
+    "pageKicker": "Die Bibliothek",
+    "pageTitle": "Alle Spiele",
+    "pageSubtitle": "Durchstöbere den Katalog über alle Genres und Plattformen hinweg.",
+    "filtersTitle": "Verfeinern",
+    "filtersSubtitle": "Das Regal eingrenzen",
+    "searchLabel": "Suche",
+    "genreLabel": "Genre",
+    "platformLabel": "Plattform",
+    "orderLabel": "Sortieren nach",
+    "searchTitle": "Spiele suchen",
+    "searchPlaceholder": "Spiele suchen...",
+    "genrePlaceholder": "Genre auswählen",
+    "platformPlaceholder": "Plattform auswählen",
+    "orderPlaceholder": "Sortierung auswählen",
+    "filters": {
+      "ratingAsc": "Bewertung aufsteigend",
+      "ratingDesc": "Bewertung absteigend",
+      "yearAsc": "Erscheinungsdatum aufsteigend",
+      "yearDesc": "Erscheinungsdatum absteigend"
+    },
+    "searchButton": "Suchen",
+    "searching": "Suche läuft...",
+    "empty": "Keine Spiele gefunden, die deinen Kriterien entsprechen.",
+    "tba": "Offen",
+    "metacritic": "Metacritic",
+    "screenshots": "Screenshots"
+  },
+  "favorites": {
+    "pageKicker": "Dein Regal",
+    "pageTitle": "Lieblingsspiele",
+    "pageSubtitle": "Die Spiele, die du dir für später vorgemerkt hast.",
+    "empty": "Dein Regal ist leer. Markiere ein Spiel aus der Bibliothek und es erscheint hier."
+  },
+  "login": {
+    "kicker": "Willkommen zurück",
+    "heading": "Willkommen zurück",
+    "subheading": "Mach da weiter, wo du aufgehört hast.",
+    "emailLabel": "E-Mail-Adresse*",
+    "emailPlaceholder": "Gib deine E-Mail-Adresse ein",
+    "passwordLabel": "Passwort*",
+    "passwordPlaceholder": "••••••••••••••••",
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort ausblenden",
+    "rememberMe": "Angemeldet bleiben",
+    "forgotPassword": "Passwort vergessen?",
+    "submit": "Anmelden",
+    "submitting": "Anmeldung..."
+  },
+  "register": {
+    "kicker": "Neu hier",
+    "heading": "Konto erstellen",
+    "subheading": "Leg dir dein eigenes Regal an.",
+    "usernameLabel": "Benutzername*",
+    "usernamePlaceholder": "Gib deinen Benutzernamen ein",
+    "emailLabel": "E-Mail-Adresse*",
+    "emailPlaceholder": "Gib deine E-Mail-Adresse ein",
+    "passwordLabel": "Passwort*",
+    "passwordPlaceholder": "••••••••••••••••",
+    "confirmPasswordLabel": "Passwort bestätigen*",
+    "confirmPasswordPlaceholder": "••••••••••••••••",
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort ausblenden",
+    "agreeToTerms": "Ich stimme den",
+    "privacyPolicy": "Datenschutzbestimmungen und Nutzungsbedingungen zu",
+    "submit": "Registrieren",
+    "submitting": "Registrierung..."
+  },
+  "validation": {
+    "usernameMin": "Der Benutzername muss mindestens 3 Zeichen lang sein",
+    "usernameMax": "Der Benutzername darf nicht länger als 20 Zeichen sein",
+    "usernameChars": "Nur Buchstaben, Zahlen und Unterstriche",
+    "emailRequired": "E-Mail-Adresse ist erforderlich",
+    "emailInvalid": "Ungültige E-Mail-Adresse",
+    "passwordMin": "Das Passwort muss mindestens 8 Zeichen lang sein",
+    "passwordUppercase": "Das Passwort muss mindestens einen Großbuchstaben enthalten",
+    "passwordNumber": "Das Passwort muss mindestens eine Zahl enthalten",
+    "confirmRequired": "Du musst dein Passwort bestätigen",
+    "passwordsMismatch": "Passwörter stimmen nicht überein",
+    "termsRequired": "Du musst den Bedingungen zustimmen"
+  },
+  "authErrors": {
+    "emailTaken": "Diese E-Mail-Adresse ist bereits registriert",
+    "invalidCredentials": "Ungültige E-Mail-Adresse oder Passwort",
+    "sessionFailed": "Sitzung konnte nicht erstellt werden",
+    "insertFailed": "Konto konnte nicht erstellt werden",
+    "lookupFailed": "Datenbankabfrage fehlgeschlagen",
+    "unexpected": "Etwas ist schiefgelaufen, bitte versuche es erneut",
+    "rateLimited": "Zu viele Versuche. Bitte warte 5 Minuten, bevor du es erneut versuchst."
+  },
+  "state": {
+    "loading": "Wird geladen...",
+    "errorLoading": "Fehler beim Laden",
+    "errorGeneric": "Fehler beim Laden. Bitte versuche es erneut.",
+    "errorWithMessage": "{message} Bitte versuche es erneut.",
+    "retry": "Erneut versuchen"
+  },
+  "notFound": {
+    "generic": {
+      "code": "404",
+      "title": "Seite nicht gefunden",
+      "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+      "backHome": "Zurück zur Startseite"
+    },
+    "game": {
+      "code": "404",
+      "title": "Spiel nicht gefunden",
+      "description": "Wir konnten dieses Spiel nicht finden. Möglicherweise wurde es entfernt oder der Link ist ungültig.",
+      "browseGames": "Alle Spiele durchsuchen"
+    }
+  }
+}
