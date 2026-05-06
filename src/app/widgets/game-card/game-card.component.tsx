@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { type FC, useState } from 'react'
 
+import { cn } from '@/pkg/theme/lib/utils'
+
 import { FavoriteGame, Game } from '@/app/entities/models'
 import { useToggleFavorites } from '@/app/features/toggle-favorite'
 import { useFavoritesStore } from '@/app/shared/hooks'
@@ -82,7 +84,10 @@ const GameCardComponent: FC<Readonly<IProps>> = (props) => {
 
         <Button
           variant={'ghost'}
-          className='cursor-pointer opacity-100 transition-opacity duration-300 group-hover:opacity-100 hover:!bg-transparent md:opacity-0'
+          className={cn(
+            'cursor-pointer opacity-100 transition-opacity duration-300 group-hover:opacity-100 hover:!bg-transparent',
+            !isNavigating && 'md:opacity-0',
+          )}
           size='icon'
         >
           {isNavigating ? <Loader2 className='h-4 w-4 animate-spin' /> : <ArrowRight className='h-4 w-4' />}
