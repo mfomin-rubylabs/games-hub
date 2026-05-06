@@ -1,102 +1,94 @@
 ---
 name: Architecture Map
-description: FSD codebase map — where things live, what is off-limits, and where to start for common tasks
+description: FSD client architecture — layer map, task entry points, and links to naming/commenting rules and code examples
 type: reference
 ---
 
-# Codebase Architecture
+# Client Architecture — FSD
+
+This is a Next.js App Router client using Feature-Sliced Design. Imports flow strictly downward: pages delegate to modules, modules compose widgets and features, entities hold all data-fetching logic. No layer may import from a layer above it.
 
 ## Layer Map
 
-| Layer    | Path                | Purpose                                                                        |
-| -------- | ------------------- | ------------------------------------------------------------------------------ |
-| Pages    | `src/app/(web)/`    | Next.js routes and layouts — keep thin; delegate to modules                    |
-| Modules  | `src/app/modules/`  | Page-level orchestration (`*.module.tsx`); compose widgets and features        |
-| Widgets  | `src/app/widgets/`  | Self-contained reusable UI sections — used across multiple modules             |
-| Features | `src/app/features/` | Scoped implementations: auth forms, toggle-favorite, session-provider, sync    |
-| Entities | `src/app/entities/` | API clients, React Query hooks, data models                                    |
-| Shared   | `src/app/shared/`   | Hooks, Zustand stores, minimal shared UI, interfaces                           |
-| Config   | `src/config/`       | Env vars, fonts, global CSS                                                    |
-| Pkg      | `src/pkg/`          | Third-party integrations (theme, locale, supabase, jwt, rate-limit)            |
+| Layer    | Path                | Purpose                                                              |
+| -------- | ------------------- | -------------------------------------------------------------------- |
+| Pages    | `src/app/(web)/`    | Next.js routes — thin; render one module per page                    |
+| Modules  | `src/app/modules/`  | Page-level orchestration (`*.module.tsx`, `*-skeleton.component.tsx`) |
+| Widgets  | `src/app/widgets/`  | Reusable UI sections used across 2+ modules                          |
+| Features | `src/app/features/` | Scoped implementations: auth forms, toggle-favorite, sync            |
+| Entities | `src/app/entities/` | API clients (`*.api.ts`), React Query hooks (`*.query.ts`)           |
+| Shared   | `src/app/shared/`   | Zustand stores, hooks, minimal shared UI, interfaces                 |
+| Config   | `src/config/`       | Env vars, fonts, global CSS                                          |
+| Pkg      | `src/pkg/`          | Third-party integrations (theme, locale, supabase, jwt, rate-limit)  |
 
 ## Route Groups under `src/app/(web)/[locale]/`
 
-| Group           | Path           | Purpose                                                              |
-| --------------- | -------------- | -------------------------------------------------------------------- |
-| `(auth)`        | sign-in, sign-up | Auth pages — middleware redirects logged-in users away             |
-| `(public)`      | home, games, game detail, favorites | Pages accessible without authentication     |
-| `(protected)`   | *(empty)*      | Future auth-required pages — add here when needed                   |
-| `[...not_found]`| catch-all      | 404 fallback                                                         |
+| Group            | Path                                    | Purpose                                          |
+| ---------------- | --------------------------------------- | ------------------------------------------------ |
+| `(auth)`         | sign-in, sign-up                        | Auth pages — middleware redirects logged-in away |
+| `(public)`       | home, games, favorites, game detail     | Publicly accessible without authentication       |
+| `(protected)`    | *(empty)*                               | Future auth-required pages                       |
+| `[...not_found]` | catch-all                               | 404 fallback                                     |
 
-## Key Locations
+---
 
-| What                    | Where                                                    |
-| ----------------------- | -------------------------------------------------------- |
-| shadcn components       | `src/pkg/theme/ui/*.tsx` — flat, no subfolders           |
-| Custom theme components | `src/pkg/theme/components/` — shadcn `components` alias  |
-| Toast service           | `src/pkg/theme/services/toast.service.ts`                |
-| cn utility              | `src/pkg/theme/lib/utils.ts`                             |
-| Locale Link/router      | `src/pkg/locale/`                                        |
-| React Query provider    | `src/app/shared/ui/query-provider/`                      |
-| Session store           | `src/app/shared/store/session.store.ts`                  |
-| Favorites store hook    | `src/app/shared/hooks/use-favorites-store.hook.ts`       |
-| Shared interfaces       | `src/app/shared/interfaces/`                             |
-| API clients             | `src/app/entities/api/<name>/<name>.api.ts`              |
-| React Query hooks       | `src/app/entities/api/<name>/<name>.query.ts`            |
-| Translations            | `translations/en.json`, `translations/de.json`           |
-| Env config              | `src/config/env/env.client.ts`, `env.server.ts`          |
-| Global styles           | `src/config/styles/global.css`                           |
-| API route handlers      | `src/app/(api)/api/<resource>/route.ts`                  |
-| Middleware              | `src/middleware.ts`                                      |
-| JWT sign/verify         | `src/pkg/jwt/jwt.ts`                                     |
-| Rate limiter            | `src/pkg/rate-limit/rate-limit.ts`                       |
-| Supabase browser client | `src/pkg/supabase/client.ts`                             |
-| Supabase server client  | `src/pkg/supabase/server.ts`                             |
-| Supabase admin client   | `src/pkg/supabase/admin.ts`                              |
-| Font config             | `src/config/fonts/font.ts`                               |
-| Shimmer utility         | `src/utils/shimmer.ts`                                   |
-| Zod schemas             | `src/app/features/<name>/<name>.schema.ts`               |
+## Mode A — New public page
 
-## Widgets — Placement Notes
+1. Create `src/app/(web)/[locale]/(public)/<route>/page.tsx` — renders one module
+2. Create `src/app/(web)/[locale]/(public)/<route>/loading.tsx` — renders one module skeleton
+3. Create `src/app/modules/<route>/<route>.module.tsx` + `<route>-skeleton.component.tsx` + `index.ts`
+4. Add translation keys to both `translations/en.json` and `translations/de.json`
+5. See → [examples/module/](examples/module/)
 
-**`game-card`** (`src/app/widgets/game-card/`) — **widget is correct**.
-Reused in both `games-list` and `favorites-list` modules. Contains favorites toggle business logic via `useToggleFavorites` (feature) + `useFavoritesStore` (shared). In FSD, widgets may import from features. Reuse across multiple modules justifies the widget layer.
+## Mode B — New protected page
 
-**`game-filters`** — widget; used by `games-list` module.
+1. Same as Mode A but under `(protected)/`
+2. Add the route path to `PROTECTED_ROUTES` in `src/middleware.ts`
 
-**`nav-bar`** — widget; used by `layout` module. Has `elements/` subfolder for locale-switcher, mobile-menu, user-button.
+## Mode C — New widget
 
-## Off-Limits / Do Not Generate Into
+1. Create `src/app/widgets/<name>/<name>.component.tsx` + `index.ts`
+2. Use a widget only when it is reused across 2+ modules; otherwise use a module `elements/` sub-component
+3. See → [examples/widget/](examples/widget/)
 
-- `src/pkg/theme/ui/` — only modify when intentionally customising a shadcn component
-- `.next/` — generated output, never touch
-- `node_modules/` — never touch
+## Mode D — New feature
 
-## Common Task Entry Points
+1. Create `src/app/features/<name>/<name>.component.tsx` (or `.service.ts`) + `index.ts`
+2. See → [examples/feature/](examples/feature/)
 
-**New public page**: `src/app/(web)/[locale]/(public)/new-route/page.tsx` → module in `src/app/modules/new-route/new-route.module.tsx` + `index.ts`
+## Mode E — New API entity
 
-**New protected page**: `src/app/(web)/[locale]/(protected)/new-route/page.tsx` → add path to `PROTECTED_ROUTES` in `src/middleware.ts` → module in `src/app/modules/new-route/`
+1. Create `src/app/entities/api/<name>/<name>.api.ts` — fetch functions
+2. Create `src/app/entities/api/<name>/<name>.query.ts` — React Query hooks
+3. Create `src/app/entities/api/<name>/index.ts` — barrel
+4. See → [examples/entity/](examples/entity/)
 
-**New API integration**: `src/app/entities/api/<name>/` — create `<name>.api.ts` + `<name>.query.ts` + `index.ts`
+## Mode F — New server API route
 
-**New shared store**: `src/app/shared/store/<name>.store.ts` — wrap with Zustand `devtools`
+1. Create `src/app/(api)/api/<resource>/route.ts`
+2. Authenticate via Bearer token using `@/pkg/jwt`
+3. Use admin Supabase client (`@/pkg/supabase/admin`)
+4. Return `NextResponse.json()`
 
-**Add a shadcn component**: `yarn dlx shadcn add <name>` → move output to `src/pkg/theme/ui/<name>.tsx` (flatten) → update `cn` import to `@/pkg/theme/lib/utils`
+## Mode G — Add a shadcn component
 
-**New feature**: `src/app/features/<name>/<name>.component.tsx` (or `.service.ts`) + `index.ts`
+1. `yarn dlx shadcn add <name>`
+2. Move the generated file to `src/pkg/theme/ui/<name>.tsx` (flatten — no subfolders)
+3. Update `cn` import to `@/pkg/theme/lib/utils`
 
-**Add a new API route**: `src/app/(api)/api/<resource>/route.ts` — authenticate with Bearer token via `@/pkg/jwt`, use admin Supabase client, return `NextResponse.json()`
+---
 
-## Import Direction
+## References
 
-(web) → modules → widgets → features → entities → shared → config → pkg
+- [Layer rules, key locations, import direction](references/layer-rules.md)
+- [Naming conventions — files, components, interfaces, props pattern](references/naming.md)
+- [Comments style](references/comments.md)
+- [Common pitfalls](references/pitfalls.md)
 
-Upper layers import from lower. Never the reverse. No circular deps.
-Every folder with public exports must have an `index.ts` barrel file.
+## Examples
 
-## Type Conventions (company policy)
-
-- **`interface` for all object shapes** — never `type` for objects
-- `type` only for: string/discriminated unions, `z.infer<>`, `ReturnType<>`, `Parameters<>`, indexed access (`T[K]`)
-- Do not use `cache` from `'react'` — Next.js request memoisation only works with native `fetch`; use React Query or accept duplicate calls
+- [module/](examples/module/) — server component module + skeleton + client element
+- [widget/](examples/widget/) — client-side reusable UI section
+- [feature/](examples/feature/) — scoped client component with business logic
+- [entity/](examples/entity/) — API fetch function + React Query hook
+- [shared/](examples/shared/) — interface file + Zustand store with persist
