@@ -6,7 +6,7 @@ import { routing } from '@/pkg/locale'
 const intlMiddleware = createIntlMiddleware(routing)
 
 const PROTECTED_ROUTES: string[] = []
-const AUTH_ROUTES = ['/login', '/register']
+const AUTH_ROUTES = ['/sign-in', '/sign-up']
 
 export function middleware(req: NextRequest) {
   const token = req.cookies.get('refresh_token')?.value
@@ -21,7 +21,7 @@ export function middleware(req: NextRequest) {
   const isAuthRoute = AUTH_ROUTES.some((r) => pathWithoutLocale.startsWith(r))
 
   if (isProtected && !token) {
-    const loginUrl = new URL(`/${locale}/login`, req.url)
+    const loginUrl = new URL(`/${locale}/sign-in`, req.url)
     loginUrl.searchParams.set('from', pathWithoutLocale)
     return NextResponse.redirect(loginUrl)
   }
